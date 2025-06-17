@@ -1,0 +1,46 @@
+direktiv_api: page/v1
+blocks:
+  - type: columns
+    blocks:
+      - type: this-is-not-a-valid-block
+        blocks:
+          - type: text
+            content: column 1 text
+      - type: column
+        blocks:
+          - type: text
+            content: column 2 text
+  - type: card
+    blocks:
+      - type: card
+        blocks:
+          - type: text
+            content: text block in 2 cards
+  - type: query-provider
+    queries:
+      - id: company-list
+        endpoint: "/ns/demo/companies"
+        queryParams:
+          - key: query
+            value: my-search-query
+    blocks:
+      - type: headline
+        level: h3
+        label: Found {{query.company-list.total}} companies
+      - type: table
+        data:
+          type: loop
+          data: query.company-list.data
+          id: company
+        actions:
+          - type: button
+            label: Edit
+          - type: button
+            label: Delete
+        columns:
+          - type: table-column
+            label: "#"
+            content: "{{loop.company.id}} of {{query.company-list.total}}"
+          - type: table-column
+            label: Company Name
+            content: "{{loop.company.name}}"
