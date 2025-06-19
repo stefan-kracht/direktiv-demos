@@ -14,7 +14,7 @@ blocks:
             mutation:
               id: create-company
               method: POST
-              baseUrl: "/ns/demo/company"
+              url: "/ns/demo/company"
             blocks:
               - type: headline
                 level: h3
@@ -22,7 +22,7 @@ blocks:
   - type: query-provider
     queries:
       - id: company-list
-        baseUrl: "/ns/demo/companies"
+        url: "/ns/demo/companies"
         queryParams:
           - key: query
             value: my-search-query
@@ -38,7 +38,7 @@ blocks:
           - type: query-provider
             queries:
               - id: company-list2
-                baseUrl: "/ns/demo/companies/{{query.company-list.data.0.id}}"
+                url: "/ns/demo/companies/{{query.company-list.data.0.id}}"
                 queryParams:
                   - key: query
                     value: "{{query.company-list.data.0.id}}"
