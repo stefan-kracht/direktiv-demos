@@ -1,0 +1,47 @@
+direktiv_api: page/v1
+type: page
+blocks:
+  - type: query-provider
+    queries:
+      - id: pokemon-list
+        url: https://pokeapi.co/api/v2/pokemon/
+        queryParams: []
+    blocks:
+      - type: headline
+        level: h2
+        label: There are {{query.pokemon-list.count}} Pokemon
+      - type: loop
+        id: pokemon
+        data: query.pokemon-list.results
+        blocks:
+          - type: columns
+            blocks:
+              - type: column
+                blocks:
+                  - type: headline
+                    level: h3
+                    label: "{{loop.pokemon.name}}"
+              - type: column
+                blocks:
+                  - type: dialog
+                    trigger:
+                      type: button
+                      label: Show
+                    blocks:
+                      - type: query-provider
+                        queries:
+                          - id: pokemon
+                            url: "{{loop.pokemon.url}}"
+                            queryParams: []
+                        blocks:
+                          - type: headline
+                            level: h1
+                            label: "{{query.pokemon.name}}"
+                          - type: text
+                            content:
+                              "{{query.pokemon.name}} is {{query.pokemon.height}} high and has a
+                              weight of {{query.pokemon.weight}}"
+                          - type: image
+                            src: "{{query.pokemon.sprites.other.dream_world.front_default}}"
+                            width: 200
+                            height: 200
