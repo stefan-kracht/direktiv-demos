@@ -1,0 +1,11 @@
+direktiv_api: workflow/v1
+description: |
+  Deletes all persons from the namespace variable
+states:
+  - id: delete-data
+    type: setter
+    variables:
+      - key: persons
+        scope: namespace
+        value: { data: [] }
+        mimeType: application/json

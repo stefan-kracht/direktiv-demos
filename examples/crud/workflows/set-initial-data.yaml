@@ -13,12 +13,12 @@ states:
       input:
         method: "GET"
         url: "https://fakerapi.it/api/v1/persons?_quantity=10"
-    transform: "jq({persons: .return[0].result.data})"
+    transform: "jq({data: .return[0].result.data})"
     transition: store-data
   - id: store-data
     type: setter
     variables:
       - key: persons
         scope: namespace
-        value: jq(.persons)
+        value: jq(.)
         mimeType: application/json
