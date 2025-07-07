@@ -1,0 +1,24 @@
+direktiv_api: workflow/v1
+description: |
+  Stores an intial set of persons in a namespace variable
+functions:
+  - id: http-request
+    image: direktiv/http-request:dev
+    type: knative-workflow
+states:
+  - id: get-fake-persons
+    type: action
+    action:
+      function: http-request
+      input:
+        method: "GET"
+        url: "https://fakerapi.it/api/v1/persons?_quantity=10"
+    transform: "jq({persons: .return[0].result.data})"
+    transition: store-data
+  - id: store-data
+    type: setter
+    variables:
+      - key: persons
+        scope: namespace
+        value: jq(.persons)
+        mimeType: application/json

@@ -1,0 +1,17 @@
+x-direktiv-api: endpoint/v2
+x-direktiv-config:
+  allow_anonymous: true
+  path: /persons
+  plugins:
+    auth: []
+    inbound: []
+    outbound: []
+    target:
+      configuration:
+        content_type: application/json
+        variable: persons
+      type: target-namespace-var
+get:
+  responses:
+    "200":
+      description: ""
