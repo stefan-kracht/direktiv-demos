@@ -33,4 +33,24 @@ blocks:
       - id: persons
         url: /ns/demo/persons
         queryParams: []
-    blocks: []
+    blocks:
+      - type: headline
+        level: h1
+        label: Persons
+      - type: loop
+        id: person
+        data: query.persons.data
+        blocks:
+          - type: columns
+            blocks:
+              - type: column
+                blocks:
+                  - type: text
+                    content: "{{loop.person.email}}"
+              - type: column
+                blocks:
+                  - type: dialog
+                    trigger:
+                      type: button
+                      label: Edit
+                    blocks: []
