@@ -1,0 +1,36 @@
+direktiv_api: page/v1
+type: page
+blocks:
+  - type: headline
+    level: h1
+    label: Crud Demo
+  - type: columns
+    blocks:
+      - type: column
+        blocks:
+          - type: form
+            trigger:
+              type: button
+              label: Seed Database
+            mutation:
+              id: seed-database
+              method: POST
+              url: /ns/demo/actions/seed-database
+            blocks: []
+      - type: column
+        blocks:
+          - type: form
+            trigger:
+              type: button
+              label: Empty Persons Database
+            mutation:
+              id: empty-persons-database
+              method: DELETE
+              url: /ns/demo/delete-all-persons
+            blocks: []
+  - type: query-provider
+    queries:
+      - id: persons
+        url: /ns/demo/persons
+        queryParams: []
+    blocks: []
