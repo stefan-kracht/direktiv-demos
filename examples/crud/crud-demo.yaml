@@ -41,16 +41,7 @@ blocks:
         id: person
         data: query.persons.data
         blocks:
-          - type: columns
-            blocks:
-              - type: column
-                blocks:
-                  - type: text
-                    content: "{{loop.person.email}}"
-              - type: column
-                blocks:
-                  - type: dialog
-                    trigger:
-                      type: button
-                      label: Edit
-                    blocks: []
+          - type: text
+            content:
+              "{{loop.person.id}} {{loop.person.firstname}} {{loop.person.lastname}}
+              {{loop.person.email}}"
