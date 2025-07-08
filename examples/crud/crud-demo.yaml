@@ -37,11 +37,22 @@ blocks:
       - type: headline
         level: h1
         label: Persons
-      - type: loop
-        id: person
-        data: query.persons.data
-        blocks:
-          - type: text
-            content:
-              "{{loop.person.id}} {{loop.person.firstname}} {{loop.person.lastname}}
-              {{loop.person.email}}"
+      - type: table
+        data:
+          type: loop
+          id: person
+          data: query.persons.data
+        actions: []
+        columns:
+          - type: table-column
+            label: id
+            content: "{{loop.person.id}}"
+          - type: table-column
+            label: first name
+            content: "{{loop.person.firstname}}"
+          - type: table-column
+            label: last name
+            content: "{{loop.person.lastname}}"
+          - type: table-column
+            label: email
+            content: "{{loop.person.email}}"
