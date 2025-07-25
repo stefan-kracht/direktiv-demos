@@ -12,7 +12,7 @@ blocks:
     blocks:
       - type: headline
         level: h1
-        label: Persons
+        label: "{{query.persons.total}} Persons"
       - type: table
         data:
           type: loop
@@ -52,8 +52,24 @@ blocks:
                         url: /ns/demo/person/{{loop.person.id}}
                         queryParams: []
                     blocks:
-                      - type: text
-                        content: This is a text {{query.person.data.id}}
+                      - type: headline
+                        level: h1
+                        label: This is {{query.person.data.first_name}}
+                      - type: columns
+                        blocks:
+                          - type: column
+                            blocks:
+                              - type: image
+                                src: "{{query.person.data.avatar}}"
+                                width: 200
+                                height: 200
+                          - type: column
+                            blocks:
+                              - type: headline
+                                level: h3
+                                label: This is {{query.person.data.first_name}} {{query.person.data.last_name}}
+                              - type: text
+                                content: This is some random text.
   - type: columns
     blocks:
       - type: column
