@@ -12,7 +12,7 @@ states:
       function: http-request
       input:
         method: "GET"
-        url: "https://fakerapi.it/api/v1/persons?_quantity=10"
+        url: "https://reqres.in/api/users?page=2"
     transform: "jq({data: .return[0].result.data})"
     transition: store-data
   - id: store-data

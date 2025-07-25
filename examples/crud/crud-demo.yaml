@@ -49,10 +49,10 @@ blocks:
             content: "{{loop.person.id}}"
           - type: table-column
             label: first name
-            content: "{{loop.person.firstname}}"
+            content: "{{loop.person.first_name}}"
           - type: table-column
             label: last name
-            content: "{{loop.person.lastname}}"
+            content: "{{loop.person.first_name}}"
           - type: table-column
             label: email
             content: "{{loop.person.email}}"
