@@ -7,5 +7,5 @@ states:
     variables:
       - key: persons
         scope: namespace
-        value: { data: [] }
+        value: { "total": 0, data: [] }
         mimeType: application/json
