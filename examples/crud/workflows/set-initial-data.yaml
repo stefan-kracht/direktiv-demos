@@ -12,7 +12,9 @@ states:
       function: http-request
       input:
         method: "GET"
-        url: "https://reqres.in/api/users?page=2"
+        headers:
+          "x-api-key": "reqres-free-v1"
+        url: "https://reqres.in/api/users"
     transform: "jq({data: .return[0].result.data, total: 10})"
     transition: store-data
   - id: store-data
