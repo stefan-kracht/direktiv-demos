@@ -18,7 +18,11 @@ blocks:
           type: loop
           id: person
           data: query.persons.data
-        actions: []
+        actions:
+          - type: button
+            label: edit
+          - type: button
+            label: delete
         columns:
           - type: table-column
             label: id
