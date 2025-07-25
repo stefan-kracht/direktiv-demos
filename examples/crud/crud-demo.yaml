@@ -3,7 +3,26 @@ type: page
 blocks:
   - type: headline
     level: h1
-    label: Crud Demo
+    label: Company Overview
+  - type: columns
+    blocks:
+      - type: column
+        blocks:
+          - type: image
+            src: https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/25.svg
+            width: 200
+            height: 200
+      - type: column
+        blocks:
+          - type: headline
+            level: h3
+            label: "CEO: Pikachu"
+          - type: text
+            content:
+              Pikachu is the CEO of ThunderCorp International, known for his
+              energetic leadership and iconic rise from pop culture mascot to
+              business figure. With a shockingly sharp strategy, he leads with
+              agility, loyalty, and charm.
   - type: query-provider
     queries:
       - id: persons
@@ -12,7 +31,7 @@ blocks:
     blocks:
       - type: headline
         level: h1
-        label: "{{query.persons.total}} Persons"
+        label: "{{query.persons.total}} employees"
       - type: table
         data:
           type: loop
@@ -36,44 +55,6 @@ blocks:
           - type: table-column
             label: email
             content: "{{loop.person.email}}"
-      - type: loop
-        id: person
-        data: query.persons.data
-        blocks:
-          - type: card
-            blocks:
-              - type: headline
-                level: h1
-                label: headline {{loop.person.id}}
-              - type: dialog
-                trigger:
-                  type: button
-                  label: view details
-                blocks:
-                  - type: query-provider
-                    queries:
-                      - id: person
-                        url: /ns/demo/person/{{loop.person.id}}
-                        queryParams: []
-                    blocks:
-                      - type: headline
-                        level: h1
-                        label: This is {{query.person.data.first_name}}
-                      - type: columns
-                        blocks:
-                          - type: column
-                            blocks:
-                              - type: image
-                                src: "{{query.person.data.avatar}}"
-                                width: 200
-                                height: 200
-                          - type: column
-                            blocks:
-                              - type: headline
-                                level: h3
-                                label: This is {{query.person.data.first_name}} {{query.person.data.last_name}}
-                              - type: text
-                                content: This is some random text.
   - type: columns
     blocks:
       - type: column
