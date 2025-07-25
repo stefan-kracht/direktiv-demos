@@ -1,7 +1,7 @@
 x-direktiv-api: endpoint/v2
 x-direktiv-config:
   allow_anonymous: true
-  path: /person/2
+  path: /person/8
   plugins:
     auth: []
     inbound: []

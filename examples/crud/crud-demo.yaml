@@ -32,6 +32,28 @@ blocks:
           - type: table-column
             label: email
             content: "{{loop.person.email}}"
+      - type: loop
+        id: person
+        data: query.persons.data
+        blocks:
+          - type: card
+            blocks:
+              - type: headline
+                level: h1
+                label: headline {{loop.person.id}}
+              - type: dialog
+                trigger:
+                  type: button
+                  label: view details
+                blocks:
+                  - type: query-provider
+                    queries:
+                      - id: person
+                        url: /ns/demo/person/{{loop.person.id}}
+                        queryParams: []
+                    blocks:
+                      - type: text
+                        content: This is a text {{query.person.data.id}}
   - type: columns
     blocks:
       - type: column
