@@ -70,7 +70,7 @@ blocks:
             content: "{{loop.person.first_name}}"
           - type: table-column
             label: last name
-            content: "{{loop.person.first_name}}"
+            content: "{{loop.person.last_name}}"
           - type: table-column
             label: email
             content: "{{loop.person.email}}"
