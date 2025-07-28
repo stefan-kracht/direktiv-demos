@@ -15,7 +15,7 @@ states:
         headers:
           "x-api-key": "reqres-free-v1"
         url: "https://reqres.in/api/users"
-    transform: "jq({data: .return[0].result.data, total: 10})"
+    transform: "jq({data: .return[0].result.data, total: 5})"
     transition: store-data
   - id: store-data
     type: setter
