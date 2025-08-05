@@ -1,0 +1,143 @@
+direktiv_api: page/v1
+type: page
+blocks:
+  - type: dialog
+    trigger:
+      type: button
+      label: create a new profile
+    blocks:
+      - type: form
+        trigger:
+          type: button
+          label: save
+        mutation:
+          id: form
+          method: POST
+          url: /some-endpoint
+        blocks:
+          - type: headline
+            level: h2
+            label: Create a new profile
+          - type: text
+            content: Please fill out the form to create a new profile.
+          - type: columns
+            blocks:
+              - type: column
+                blocks:
+                  - id: first_name
+                    label: First name
+                    description: ""
+                    optional: false
+                    type: form-input
+                    variant: text
+                    defaultValue: ""
+                  - id: zip
+                    label: zip code
+                    description: ""
+                    optional: false
+                    type: form-input
+                    variant: text
+                    defaultValue: ""
+              - type: column
+                blocks:
+                  - id: last_name
+                    label: last name
+                    description: ""
+                    optional: false
+                    type: form-input
+                    variant: text
+                    defaultValue: ""
+                  - id: country
+                    label: Country
+                    description: ""
+                    optional: false
+                    type: form-select
+                    values:
+                      - one
+                      - two
+                      - three
+                    defaultValue: two
+          - id: password
+            label: password
+            description:
+              Your password must be at least 8 characters long, include uppercase
+              and lowercase letters, a number, a special character, and contain
+              no spaces.
+            optional: false
+            type: form-input
+            variant: password
+            defaultValue: ""
+          - id: issue
+            label: description
+            description: This will be visible on your profile page
+            optional: true
+            type: form-textarea
+            defaultValue: ""
+          - id: terms
+            label: terms
+            description: I agree to the terms and services
+            optional: false
+            type: form-checkbox
+            defaultValue: false
+  - type: headline
+    level: h2
+    label: Create new cluster
+  - type: card
+    blocks:
+      - type: form
+        trigger:
+          type: button
+          label: save
+        mutation:
+          id: ihiodwehidoewhio
+          method: POST
+          url: dede
+        blocks:
+          - type: columns
+            blocks:
+              - type: column
+                blocks:
+                  - id: cluster_name
+                    label: Cluster Name
+                    description: ""
+                    optional: false
+                    type: form-input
+                    variant: text
+                    defaultValue: ""
+              - type: column
+                blocks:
+                  - id: region
+                    label: Region
+                    description: ""
+                    optional: false
+                    type: form-select
+                    values:
+                      - us-east-1
+                      - us-west-2
+                      - eu-central-1
+                    defaultValue: ""
+          - id: cluster_description
+            label: Description
+            description: ""
+            optional: true
+            type: form-textarea
+            defaultValue: ""
+          - type: columns
+            blocks:
+              - type: column
+                blocks:
+                  - id: is_public
+                    label: Availability
+                    description: Enable Public Access
+                    optional: false
+                    type: form-checkbox
+                    defaultValue: false
+              - type: column
+                blocks:
+                  - id: date
+                    label: Expire at
+                    description: ""
+                    optional: false
+                    type: form-input
+                    variant: date
+                    defaultValue: ""
