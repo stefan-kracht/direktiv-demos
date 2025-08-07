@@ -28,14 +28,14 @@ blocks:
                     label: First name
                     description: ""
                     optional: false
-                    type: form-input
+                    type: form-string-input
                     variant: text
                     defaultValue: ""
                   - id: zip
                     label: zip code
                     description: ""
                     optional: false
-                    type: form-input
+                    type: form-string-input
                     variant: text
                     defaultValue: ""
               - type: column
@@ -44,7 +44,7 @@ blocks:
                     label: last name
                     description: ""
                     optional: false
-                    type: form-input
+                    type: form-string-input
                     variant: text
                     defaultValue: ""
                   - id: country
@@ -64,7 +64,7 @@ blocks:
               and lowercase letters, a number, a special character, and contain
               no spaces.
             optional: false
-            type: form-input
+            type: form-string-input
             variant: password
             defaultValue: ""
           - id: issue
@@ -101,7 +101,7 @@ blocks:
                     label: Cluster Name
                     description: ""
                     optional: false
-                    type: form-input
+                    type: form-string-input
                     variant: text
                     defaultValue: ""
               - type: column
@@ -138,6 +138,6 @@ blocks:
                     label: Expire at
                     description: ""
                     optional: false
-                    type: form-input
+                    type: form-string-input
                     variant: date
                     defaultValue: ""
