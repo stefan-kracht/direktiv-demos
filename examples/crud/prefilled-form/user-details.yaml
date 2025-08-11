@@ -1,0 +1,37 @@
+x-direktiv-api: endpoint/v2
+x-direktiv-config:
+  allow_anonymous: true
+  path: /user-details
+  plugins:
+    auth: []
+    inbound: []
+    outbound: []
+    target:
+      configuration:
+        status_code: 200
+        status_message: >
+          {
+            "meta": {
+              "subscriptionPlanOptions": [
+                { "value": "free", "label": "Free Plan" },
+                { "value": "pro", "label": "Pro Plan" },
+                { "value": "enterprise", "label": "Enterprise Plan" }
+              ]
+            },
+            "data": {
+              "status": "ok",
+              "userId": 101,
+              "accountBalance": 19.99,
+              "emailVerified": true,
+              "twoFactorEnabled": false,
+              "lastLogin": null,
+              "profile": { "firstName": "Alice" },
+              "subscriptionPlan": "pro",
+              "recentActivity": [ "login", 1623456789, false, null, { "action": "purchase" } ]
+            }
+          }
+      type: instant-response
+get:
+  responses:
+    "200":
+      description: ""

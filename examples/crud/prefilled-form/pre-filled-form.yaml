@@ -1,0 +1,82 @@
+direktiv_api: page/v1
+type: page
+blocks:
+  - type: headline
+    level: h1
+    label: Pre-filled form
+  - type: query-provider
+    queries:
+      - id: user
+        url: /ns/demo/user-details
+        queryParams: []
+    blocks:
+      - type: form
+        trigger:
+          type: button
+          label: form
+        mutation:
+          id: form
+          method: POST
+          url: /form
+        blocks:
+          - type: card
+            blocks:
+              - id: string
+                label: string input
+                description: ""
+                optional: false
+                type: form-string-input
+                variant: text
+                defaultValue: "This data comes from the API -> string;
+                  {{query.user.data.status}},
+                  number: {{query.user.data.userId}}, boolean:
+                  {{query.user.data.emailVerified}}"
+              - id: textarea
+                label: textarea
+                description: ""
+                optional: false
+                type: form-textarea
+                defaultValue: "This data comes from the API -> string;
+                  {{query.user.data.status}},
+                  number: {{query.user.data.userId}}, boolean:
+                  {{query.user.data.emailVerified}}"
+          - type: card
+            blocks:
+              - type: columns
+                blocks:
+                  - type: column
+                    blocks:
+                      - id: static-checkbox
+                        label: static checkbox
+                        description: default values is always checked
+                        optional: false
+                        type: form-checkbox
+                        defaultValue:
+                          type: boolean
+                          value: true
+                      - id: static-number-input
+                        label: static number input
+                        description: default value is always 3
+                        optional: false
+                        type: form-number-input
+                        defaultValue:
+                          type: number
+                          value: 3
+                  - type: column
+                    blocks:
+                      - id: dynamic-checkbox
+                        label: dynamic checkbox
+                        description: default value comes from the api
+                        optional: false
+                        type: form-checkbox
+                        defaultValue:
+                          type: variable
+                          value: query.user.data.emailVerified
+                      - id: dynamic-number-input
+                        label: dynamic number input
+                        description: default value comes from API
+                        optional: false
+                        type: form-number-input
+                        defaultValue:
+                          type: variable
+                          value: query.user.data.accountBalance
