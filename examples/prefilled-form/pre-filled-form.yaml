@@ -61,7 +61,7 @@ blocks:
                         type: form-number-input
                         defaultValue:
                           type: number
-                          value: 7
+                          value: 3
                       - id: static-date
                         label: static date
                         description: default value is always 2025-12-24
@@ -69,6 +69,16 @@ blocks:
                         type: form-string-input
                         variant: date
                         defaultValue: 2025-12-24
+                      - id: static-select
+                        label: static select
+                        description: default value is always two
+                        optional: false
+                        type: form-select
+                        values:
+                          - one
+                          - two
+                          - three
+                        defaultValue: two
                   - type: column
                     blocks:
                       - id: dynamic-checkbox
@@ -120,7 +130,7 @@ blocks:
                   type: variable
                   value: query.user.data.status
               - id: number-using-string
-                label: de
+                label: invalid number inpuit
                 description: This number input is pointing to a string for the default value
                 optional: false
                 type: form-number-input
