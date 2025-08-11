@@ -66,8 +66,7 @@ blocks:
                         label: static date
                         description: default value is always 2025-12-24
                         optional: false
-                        type: form-string-input
-                        variant: date
+                        type: form-date-input
                         defaultValue: 2025-12-24
                       - id: static-select
                         label: static select
@@ -103,8 +102,7 @@ blocks:
                         description: default value comes from the api
                           ({{query.user.data.membershipStartDate}})
                         optional: false
-                        type: form-string-input
-                        variant: date
+                        type: form-date-input
                         defaultValue: "{{query.user.data.membershipStartDate}}"
           - type: headline
             level: h2

@@ -138,6 +138,5 @@ blocks:
                     label: Expire at
                     description: ""
                     optional: false
-                    type: form-string-input
-                    variant: date
+                    type: form-date-input
                     defaultValue: ""
