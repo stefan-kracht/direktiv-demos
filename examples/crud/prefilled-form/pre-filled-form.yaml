@@ -1,9 +1,6 @@
 direktiv_api: page/v1
 type: page
 blocks:
-  - type: headline
-    level: h1
-    label: Pre-filled form
   - type: query-provider
     queries:
       - id: user
@@ -19,6 +16,9 @@ blocks:
           method: POST
           url: /form
         blocks:
+          - type: headline
+            level: h1
+            label: Pre-filled form
           - type: card
             blocks:
               - id: string
@@ -27,8 +27,8 @@ blocks:
                 optional: false
                 type: form-string-input
                 variant: text
-                defaultValue: "This data comes from the API -> string;
-                  {{query.user.data.status}},
+                defaultValue: "This data comes from the API ->
+                  string:{{query.user.data.status}},
                   number: {{query.user.data.userId}}, boolean:
                   {{query.user.data.emailVerified}}"
               - id: textarea
@@ -36,8 +36,8 @@ blocks:
                 description: ""
                 optional: false
                 type: form-textarea
-                defaultValue: "This data comes from the API -> string;
-                  {{query.user.data.status}},
+                defaultValue: "This data comes from the API ->
+                  string:{{query.user.data.status}},
                   number: {{query.user.data.userId}}, boolean:
                   {{query.user.data.emailVerified}}"
           - type: card
@@ -61,7 +61,14 @@ blocks:
                         type: form-number-input
                         defaultValue:
                           type: number
-                          value: 3
+                          value: 7
+                      - id: static-date
+                        label: static date
+                        description: ""
+                        optional: false
+                        type: form-string-input
+                        variant: date
+                        defaultValue: 2025-12-24
                   - type: column
                     blocks:
                       - id: dynamic-checkbox
@@ -80,3 +87,41 @@ blocks:
                         defaultValue:
                           type: variable
                           value: query.user.data.accountBalance
+                      - id: dynamic-date
+                        label: dynamic date
+                        description: ""
+                        optional: false
+                        type: form-string-input
+                        variant: date
+                        defaultValue: "{{query.user.data.membershipStartDate}}"
+          - type: headline
+            level: h2
+            label: error cases
+          - type: card
+            blocks:
+              - type: text
+                content:
+                  These form elements demonstrate various error cases when using a
+                  variable that has an invalid type for the specific use case.
+              - id: textarea-using-an-object
+                label: invalid textarea
+                description: This textarea is using an object in the template string
+                optional: false
+                type: form-textarea
+                defaultValue: "{{query.user.data}}"
+              - id: checkbox-pointing-to-string
+                label: invalid checkbox
+                description: This checkbox is pointing to a string for the default value
+                optional: false
+                type: form-checkbox
+                defaultValue:
+                  type: variable
+                  value: query.user.data.status
+              - id: number-using-string
+                label: de
+                description: This number input is pointing to a string for the default value
+                optional: false
+                type: form-number-input
+                defaultValue:
+                  type: variable
+                  value: query.user.data.status
