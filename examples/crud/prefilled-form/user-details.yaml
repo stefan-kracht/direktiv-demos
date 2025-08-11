@@ -27,7 +27,8 @@ x-direktiv-config:
               "lastLogin": null,
               "profile": { "firstName": "Alice" },
               "subscriptionPlan": "pro",
-              "recentActivity": [ "login", 1623456789, false, null, { "action": "purchase" } ]
+              "recentActivity": [ "login", 1623456789, false, null, { "action": "purchase" } ],
+              "membershipStartDate": "2023-06-15T09:30:00Z"
             }
           }
       type: instant-response
