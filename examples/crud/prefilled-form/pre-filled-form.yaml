@@ -64,7 +64,7 @@ blocks:
                           value: 7
                       - id: static-date
                         label: static date
-                        description: ""
+                        description: default value is always 2025-12-24
                         optional: false
                         type: form-string-input
                         variant: date
@@ -74,6 +74,7 @@ blocks:
                       - id: dynamic-checkbox
                         label: dynamic checkbox
                         description: default value comes from the api
+                          ({{query.user.data.emailVerified}})
                         optional: false
                         type: form-checkbox
                         defaultValue:
@@ -81,7 +82,7 @@ blocks:
                           value: query.user.data.emailVerified
                       - id: dynamic-number-input
                         label: dynamic number input
-                        description: default value comes from API
+                        description: default value comes from API ({{query.user.data.accountBalance}})
                         optional: false
                         type: form-number-input
                         defaultValue:
@@ -89,7 +90,8 @@ blocks:
                           value: query.user.data.accountBalance
                       - id: dynamic-date
                         label: dynamic date
-                        description: ""
+                        description: default value comes from the api
+                          ({{query.user.data.membershipStartDate}})
                         optional: false
                         type: form-string-input
                         variant: date
