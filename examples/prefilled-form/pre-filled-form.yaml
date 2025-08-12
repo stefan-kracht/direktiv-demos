@@ -74,10 +74,10 @@ blocks:
                         optional: false
                         type: form-select
                         values:
-                          - one
-                          - two
-                          - three
-                        defaultValue: two
+                          - free
+                          - pro
+                          - enterprise
+                        defaultValue: free
                   - type: column
                     blocks:
                       - id: dynamic-checkbox
@@ -104,6 +104,16 @@ blocks:
                         optional: false
                         type: form-date-input
                         defaultValue: "{{query.user.data.membershipStartDate}}"
+                      - id: dynamic-select
+                        label: dynamic-select
+                        description: default value comes from API ({{query.user.data.subscriptionPlan}})
+                        optional: false
+                        type: form-select
+                        values:
+                          - free
+                          - pro
+                          - enterprise
+                        defaultValue: "{{query.user.data.subscriptionPlan}}"
           - type: headline
             level: h2
             label: error cases
