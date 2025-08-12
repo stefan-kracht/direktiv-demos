@@ -105,7 +105,7 @@ blocks:
                         type: form-date-input
                         defaultValue: "{{query.user.data.membershipStartDate}}"
                       - id: dynamic-select
-                        label: dynamic-select
+                        label: dynamic select
                         description: default value comes from API ({{query.user.data.subscriptionPlan}})
                         optional: false
                         type: form-select
