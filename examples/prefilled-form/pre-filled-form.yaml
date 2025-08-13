@@ -129,7 +129,7 @@ blocks:
                 optional: false
                 type: form-textarea
                 defaultValue: "{{query.user.data}}"
-              - id: checkbox-pointing-to-string
+              - id: checkbox-using-a-string
                 label: invalid checkbox
                 description: This checkbox is pointing to a string for the default value
                 optional: false
@@ -138,10 +138,19 @@ blocks:
                   type: variable
                   value: query.user.data.status
               - id: number-using-string
-                label: invalid number inpuit
+                label: invalid number input
                 description: This number input is pointing to a string for the default value
                 optional: false
                 type: form-number-input
                 defaultValue:
                   type: variable
                   value: query.user.data.status
+              - id: select-using-boolean
+                label: invalid-select
+                description: This select input is pointing to a boolean for the default value
+                optional: false
+                type: form-select
+                values:
+                  - one
+                  - two
+                defaultValue: "{{query.user.data}}"
