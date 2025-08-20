@@ -14,7 +14,52 @@ blocks:
         mutation:
           id: form
           method: POST
-          url: /form
+          url: /form/{{this.form.string}}
+          queryParams:
+            - key: string-input
+              value: "{{this.form.string}}"
+            - key: textarea
+              value: "{{this.form.textarea}}"
+            - key: checkbox
+              value: "{{this.form.dynamic-checkbox}}"
+            - key: number-input
+              value: "{{this.form.dynamic-number-input}}"
+            - key: dateicker
+              value: "{{this.form.dynamic-date}}"
+            - key: select
+              value: "{{this.form.dynamic-select}}"
+            - key: query-provider
+              value: "{{query.user.data.status}}"
+          requestHeaders:
+            - key: string-input
+              value: "{{this.form.string}}"
+            - key: textarea
+              value: "{{this.form.textarea}}"
+            - key: checkbox
+              value: "{{this.form.dynamic-checkbox}}"
+            - key: number-input
+              value: "{{this.form.dynamic-number-input}}"
+            - key: dateicker
+              value: "{{this.form.dynamic-date}}"
+            - key: select
+              value: "{{this.form.dynamic-select}}"
+            - key: query-provider
+              value: "{{query.user.data.status}}"
+          requestBody:
+            - key: string-input
+              value: "{{this.form.string}}"
+            - key: textarea
+              value: "{{this.form.textarea}}"
+            - key: checkbox
+              value: "{{this.form.dynamic-checkbox}}"
+            - key: number-input
+              value: "{{this.form.dynamic-number-input}}"
+            - key: dateicker
+              value: "{{this.form.dynamic-date}}"
+            - key: select
+              value: "{{this.form.dynamic-select}}"
+            - key: query-provider
+              value: "{{query.user.data.status}}"
         blocks:
           - type: headline
             level: h1
