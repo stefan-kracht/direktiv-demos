@@ -78,7 +78,9 @@ blocks:
             description: I agree to the terms and services
             optional: false
             type: form-checkbox
-            defaultValue: false
+            defaultValue:
+              type: boolean
+              value: true
   - type: headline
     level: h2
     label: Create new cluster
@@ -131,7 +133,9 @@ blocks:
                     description: Enable Public Access
                     optional: false
                     type: form-checkbox
-                    defaultValue: false
+                    defaultValue:
+                      type: boolean
+                      value: true
               - type: column
                 blocks:
                   - id: date
