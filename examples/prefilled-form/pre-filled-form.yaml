@@ -119,9 +119,11 @@ blocks:
                         optional: false
                         type: form-select
                         values:
-                          - free
-                          - pro
-                          - enterprise
+                          type: array
+                          value:
+                            - free
+                            - pro
+                            - enterprise
                         defaultValue: free
                   - type: column
                     blocks:
@@ -151,13 +153,12 @@ blocks:
                         defaultValue: "{{query.user.data.membershipStartDate}}"
                       - id: dynamic-select
                         label: dynamic select
-                        description: default value comes from API ({{query.user.data.subscriptionPlan}})
+                        description: default value and values come from API ({{query.user.data.subscriptionPlan}})
                         optional: false
                         type: form-select
                         values:
-                          - free
-                          - pro
-                          - enterprise
+                          type: variable
+                          value: query.user.meta.subscriptionPlanOptions
                         defaultValue: "{{query.user.data.subscriptionPlan}}"
           - type: headline
             level: h2
@@ -196,6 +197,8 @@ blocks:
                 optional: false
                 type: form-select
                 values:
-                  - one
-                  - two
+                  type: array
+                  value:
+                    - one
+                    - two
                 defaultValue: "{{query.user.data}}"
