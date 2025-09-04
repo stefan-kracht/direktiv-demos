@@ -32,6 +32,7 @@ blocks:
           type: loop
           data: query.company-list.data
           id: company
+          pageSize: 10
         actions:
           - type: button
             label: Edit

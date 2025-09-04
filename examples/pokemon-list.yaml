@@ -13,6 +13,7 @@ blocks:
       - type: loop
         id: pokemon
         data: query.pokemon-list.results
+        pageSize: 10
         blocks:
           - type: columns
             blocks:
