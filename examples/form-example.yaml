@@ -53,9 +53,11 @@ blocks:
                     optional: false
                     type: form-select
                     values:
-                      - one
-                      - two
-                      - three
+                      type: array
+                      value:
+                        - one
+                        - two
+                        - three
                     defaultValue: two
           - id: password
             label: password
@@ -114,9 +116,11 @@ blocks:
                     optional: false
                     type: form-select
                     values:
-                      - us-east-1
-                      - us-west-2
-                      - eu-central-1
+                      type: array
+                      value:
+                        - us-east-1
+                        - us-west-2
+                        - eu-central-1
                     defaultValue: ""
           - id: cluster_description
             label: Description
