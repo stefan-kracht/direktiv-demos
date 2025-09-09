@@ -95,7 +95,6 @@ blocks:
               type: button
               label: Empty Persons Database
             mutation:
-              id: empty-persons-database
               method: DELETE
               url: /ns/demo/delete-all-persons
             blocks: []

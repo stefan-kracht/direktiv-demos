@@ -12,7 +12,6 @@ blocks:
           type: button
           label: form
         mutation:
-          id: form
           method: POST
           url: /form/{{this.form.string}}
           queryParams:

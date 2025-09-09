@@ -13,7 +13,6 @@ blocks:
               type: button
               label: Search
             mutation:
-              id: create-company
               method: POST
               url: "/ns/demo/company"
             blocks:
