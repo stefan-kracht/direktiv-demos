@@ -13,42 +13,42 @@ blocks:
           label: form
         mutation:
           method: POST
-          url: /form/{{this.form.string}}
+          url: /form/{{this.string}}
           queryParams:
             - key: string-input
-              value: "{{this.form.string}}"
+              value: "{{this.string}}"
             - key: textarea
-              value: "{{this.form.textarea}}"
+              value: "{{this.textarea}}"
             - key: checkbox
-              value: "{{this.form.dynamic-checkbox}}"
+              value: "{{this.dynamic-checkbox}}"
             - key: number-input
-              value: "{{this.form.dynamic-number-input}}"
+              value: "{{this.dynamic-number-input}}"
             - key: dateicker
-              value: "{{this.form.dynamic-date}}"
+              value: "{{this.dynamic-date}}"
             - key: select
-              value: "{{this.form.dynamic-select}}"
+              value: "{{this.dynamic-select}}"
             - key: query-provider
               value: "{{query.user.data.status}}"
           requestHeaders:
             - key: string-input
-              value: "{{this.form.string}}"
+              value: "{{this.string}}"
             - key: textarea
-              value: "{{this.form.textarea}}"
+              value: "{{this.textarea}}"
             - key: checkbox
-              value: "{{this.form.dynamic-checkbox}}"
+              value: "{{this.dynamic-checkbox}}"
             - key: number-input
-              value: "{{this.form.dynamic-number-input}}"
+              value: "{{this.dynamic-number-input}}"
             - key: dateicker
-              value: "{{this.form.dynamic-date}}"
+              value: "{{this.dynamic-date}}"
             - key: select
-              value: "{{this.form.dynamic-select}}"
+              value: "{{this.dynamic-select}}"
             - key: query-provider
               value: "{{query.user.data.status}}"
           requestBody:
             - key: string-input
               value:
                 type: string
-                value: "{{this.form.string}}"
+                value: "{{this.string}}"
             - key: boolean
               value:
                 type: boolean
