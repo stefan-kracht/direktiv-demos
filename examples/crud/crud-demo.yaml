@@ -19,10 +19,9 @@ blocks:
             label: "CEO: Pikachu"
           - type: text
             content:
-              Pikachu is the CEO of ThunderCorp International, known for his
-              energetic leadership and iconic rise from pop culture mascot to
-              business figure. With a shockingly sharp strategy, he leads with
-              agility, loyalty, and charm.
+              Pikachu is the CEO of ThunderCorp International, known for his energetic
+              leadership and iconic rise from pop culture mascot to business figure. With
+              a shockingly sharp strategy, he leads with agility, loyalty, and charm.
           - type: dialog
             trigger:
               type: button
@@ -31,21 +30,19 @@ blocks:
               - type: text
                 content:
                   Under Pikachu's leadership, ThunderCorp has expanded into cutting-edge
-                  sectors including sustainable energy, gamified wellness
-                  platforms, and AI-driven entertainment. His approach blends
-                  instinctive decision-making with deep emotional intelligence,
-                  earning him a reputation as both a visionary and a team-first
-                  executive. Despite his small stature, Pikachu commands
-                  attention in boardrooms worldwide, often communicating through
-                  subtle gestures, electrifying presence, and the occasional
-                  “Pika” punctuated with purpose. A firm believer in
-                  evolution—both personal and organizational—he champions growth
-                  through adaptation, partnership, and a relentless commitment
-                  to staying one step ahead in an ever-changing landscape.
+                  sectors including sustainable energy, gamified wellness platforms, and AI-driven
+                  entertainment. His approach blends instinctive decision-making with deep
+                  emotional intelligence, earning him a reputation as both a visionary and
+                  a team-first executive. Despite his small stature, Pikachu commands attention
+                  in boardrooms worldwide, often communicating through subtle gestures, electrifying
+                  presence, and the occasional “Pika” punctuated with purpose. A firm believer
+                  in evolution—both personal and organizational—he champions growth through
+                  adaptation, partnership, and a relentless commitment to staying one step
+                  ahead in an ever-changing landscape.
   - type: query-provider
     queries:
       - id: persons
-        url: /ns/demo/persons
+        url: "/ns/demo/persons"
         queryParams: []
     blocks:
       - type: headline
@@ -57,11 +54,11 @@ blocks:
           id: person
           data: query.persons.data
           pageSize: 10
-        actions:
-          - type: button
-            label: edit
-          - type: button
-            label: delete
+        blocks:
+          - type: table-actions
+            blocks: []
+          - type: row-actions
+            blocks: []
         columns:
           - type: table-column
             label: id
@@ -84,9 +81,8 @@ blocks:
               type: button
               label: Seed Database
             mutation:
-              id: seed-database
               method: POST
-              url: /ns/demo/actions/seed-database
+              url: "/ns/demo/actions/seed-database"
             blocks: []
       - type: column
         blocks:
@@ -96,5 +92,5 @@ blocks:
               label: Empty Persons Database
             mutation:
               method: DELETE
-              url: /ns/demo/delete-all-persons
+              url: "/ns/demo/delete-all-persons"
             blocks: []
