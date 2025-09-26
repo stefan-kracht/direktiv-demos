@@ -1,5 +1,5 @@
 direktiv_api: page/v1
-type: "page"
+type: page
 blocks:
   - type: card
     blocks:
@@ -14,7 +14,7 @@ blocks:
               label: Search
             mutation:
               method: POST
-              url: "/ns/demo/company"
+              url: /ns/demo/company
             blocks:
               - type: headline
                 level: h3
@@ -22,7 +22,7 @@ blocks:
   - type: query-provider
     queries:
       - id: company-list
-        url: "/ns/demo/companies"
+        url: /ns/demo/companies
         queryParams:
           - key: query
             value: my-search-query
@@ -38,7 +38,7 @@ blocks:
           - type: query-provider
             queries:
               - id: company-list2
-                url: "/ns/demo/companies/{{query.company-list.data.0.id}}"
+                url: /ns/demo/companies/{{query.company-list.data.0.id}}
                 queryParams:
                   - key: query
                     value: "{{query.company-list.data.0.id}}"
@@ -46,14 +46,46 @@ blocks:
       - type: table
         data:
           type: loop
-          data: query.company-list.data
           id: company
+          data: query.company-list.data
           pageSize: 10
         blocks:
           - type: table-actions
-            blocks: []
+            blocks:
+              - type: dialog
+                trigger:
+                  type: button
+                  label: Create new user
+                blocks:
+                  - type: headline
+                    level: h2
+                    label: create new user
+              - type: dialog
+                trigger:
+                  type: button
+                  label: Edit user permissions
+                blocks:
+                  - type: headline
+                    level: h2
+                    label: Edit user permissions
           - type: row-actions
-            blocks: []
+            blocks:
+              - type: dialog
+                trigger:
+                  type: button
+                  label: Delete {{loop.company.name}}
+                blocks:
+                  - type: headline
+                    level: h2
+                    label: Delete {{loop.company.name}}
+              - type: dialog
+                trigger:
+                  type: button
+                  label: Edit {{loop.company.name}}
+                blocks:
+                  - type: headline
+                    level: h2
+                    label: Edit {{loop.company.name}}
         columns:
           - type: table-column
             label: "#"
