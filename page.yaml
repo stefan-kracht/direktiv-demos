@@ -49,11 +49,11 @@ blocks:
           data: query.company-list.data
           id: company
           pageSize: 10
-        actions:
-          - type: button
-            label: Edit
-          - type: button
-            label: Delete
+        blocks:
+          - type: table-actions
+            blocks: []
+          - type: row-actions
+            blocks: []
         columns:
           - type: table-column
             label: "#"
