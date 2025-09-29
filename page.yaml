@@ -1,24 +1,6 @@
 direktiv_api: page/v1
 type: page
 blocks:
-  - type: card
-    blocks:
-      - type: dialog
-        trigger:
-          type: button
-          label: Create Company
-        blocks:
-          - type: form
-            trigger:
-              type: button
-              label: Search
-            mutation:
-              method: POST
-              url: /ns/demo/company
-            blocks:
-              - type: headline
-                level: h3
-                label: Create Company
   - type: query-provider
     queries:
       - id: company-list
@@ -30,19 +12,6 @@ blocks:
       - type: headline
         level: h3
         label: Found {{query.company-list.total}} companies
-      - type: dialog
-        trigger:
-          type: button
-          label: Create Company
-        blocks:
-          - type: query-provider
-            queries:
-              - id: company-list2
-                url: /ns/demo/companies/{{query.company-list.data.0.id}}
-                queryParams:
-                  - key: query
-                    value: "{{query.company-list.data.0.id}}"
-            blocks: []
       - type: table
         data:
           type: loop
@@ -55,11 +24,11 @@ blocks:
               - type: dialog
                 trigger:
                   type: button
-                  label: Create new user
+                  label: Create new company
                 blocks:
                   - type: headline
                     level: h2
-                    label: create new user
+                    label: create new company
               - type: dialog
                 trigger:
                   type: button
