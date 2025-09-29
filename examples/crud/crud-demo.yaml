@@ -88,7 +88,7 @@ blocks:
                       type: button
                       label: empy database
                     mutation:
-                      method: POST
+                      method: DELETE
                       url: /ns/demo/delete-all-persons
                     blocks:
                       - type: headline
