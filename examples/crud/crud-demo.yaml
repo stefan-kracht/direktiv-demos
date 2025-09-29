@@ -59,9 +59,60 @@ blocks:
           pageSize: 10
         blocks:
           - type: table-actions
-            blocks: []
+            blocks:
+              - type: dialog
+                trigger:
+                  type: button
+                  label: seed database
+                blocks:
+                  - type: form
+                    trigger:
+                      type: button
+                      label: Seed Database
+                    mutation:
+                      method: POST
+                      url: /ns/demo/actions/seed-database
+                    blocks:
+                      - type: headline
+                        level: h3
+                        label: Seed database
+                      - type: text
+                        content: Do you want to seed the database with a sample set of data?
+              - type: dialog
+                trigger:
+                  type: button
+                  label: empty database
+                blocks:
+                  - type: form
+                    trigger:
+                      type: button
+                      label: empy database
+                    mutation:
+                      method: POST
+                      url: /ns/demo/delete-all-persons
+                    blocks:
+                      - type: headline
+                        level: h3
+                        label: Empty database
+                      - type: text
+                        content: Do you want to empty the database?
           - type: row-actions
-            blocks: []
+            blocks:
+              - type: dialog
+                trigger:
+                  type: button
+                  label: delete
+                blocks:
+                  - type: form
+                    trigger:
+                      type: button
+                      label: Delete
+                    mutation:
+                      method: DELETE
+                      url: /ns/demo/delete-person/{{loop.person.id}}
+                    blocks:
+                      - type: text
+                        content: Are you sure you want to delte {{loop.person.first_name}}
         columns:
           - type: table-column
             label: id
@@ -75,25 +126,3 @@ blocks:
           - type: table-column
             label: email
             content: "{{loop.person.email}}"
-  - type: columns
-    blocks:
-      - type: column
-        blocks:
-          - type: form
-            trigger:
-              type: button
-              label: Seed Database
-            mutation:
-              method: POST
-              url: /ns/demo/actions/seed-database
-            blocks: []
-      - type: column
-        blocks:
-          - type: form
-            trigger:
-              type: button
-              label: Empty Persons Database
-            mutation:
-              method: DELETE
-              url: /ns/demo/delete-all-persons
-            blocks: []
