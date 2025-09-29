@@ -8,9 +8,9 @@ x-direktiv-config:
     outbound: []
     target:
       configuration:
-        content_type: application/json
-        variable: persons
-      type: target-namespace-var
+        async: false
+        flow: /examples/crud/workflows/return-persons.yaml
+      type: target-flow
 get:
   responses:
     "200":
