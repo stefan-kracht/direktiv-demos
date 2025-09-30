@@ -211,6 +211,28 @@ blocks:
               - type: dialog
                 trigger:
                   type: button
+                  label: open
+                blocks:
+                  - type: headline
+                    level: h3
+                    label: "{{loop.person.name}}"
+                  - type: query-provider
+                    queries:
+                      - id: employee
+                        url: http://localhost:3333/employees/{{loop.person.id}}
+                        queryParams: []
+                    blocks:
+                      - type: text
+                        content: Salary {{query.employee.data.salary}}
+                      - type: text
+                        content: Age {{query.employee.data.age}}
+                      - type: text
+                        content: Department {{query.employee.data.department}}
+                      - type: text
+                        content: Active {{query.employee.data.isActive}}
+              - type: dialog
+                trigger:
+                  type: button
                   label: edit
                 blocks:
                   - type: headline
