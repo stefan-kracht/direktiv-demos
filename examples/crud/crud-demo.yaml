@@ -223,13 +223,13 @@ blocks:
                         queryParams: []
                     blocks:
                       - type: text
-                        content: Salary {{query.employee.data.salary}}
+                        content: "Salary: {{query.employee.data.salary}}"
                       - type: text
-                        content: Age {{query.employee.data.age}}
+                        content: "Age: {{query.employee.data.age}}"
                       - type: text
-                        content: Department {{query.employee.data.department}}
+                        content: "Department: {{query.employee.data.department}}"
                       - type: text
-                        content: Active {{query.employee.data.isActive}}
+                        content: "Active: {{query.employee.data.isActive}}"
               - type: dialog
                 trigger:
                   type: button
