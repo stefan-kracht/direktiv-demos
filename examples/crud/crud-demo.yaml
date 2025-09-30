@@ -222,14 +222,24 @@ blocks:
                         url: http://localhost:3333/employees/{{loop.person.id}}
                         queryParams: []
                     blocks:
-                      - type: text
-                        content: "Salary: {{query.employee.data.salary}}"
-                      - type: text
-                        content: "Age: {{query.employee.data.age}}"
-                      - type: text
-                        content: "Department: {{query.employee.data.department}}"
-                      - type: text
-                        content: "Active: {{query.employee.data.isActive}}"
+                      - type: columns
+                        blocks:
+                          - type: column
+                            blocks:
+                              - type: image
+                                src: "{{query.employee.data.image}}"
+                                width: 200
+                                height: 200
+                          - type: column
+                            blocks:
+                              - type: text
+                                content: "Salary: {{query.employee.data.salary}}"
+                              - type: text
+                                content: "Age: {{query.employee.data.age}}"
+                              - type: text
+                                content: "Department: {{query.employee.data.department}}"
+                              - type: text
+                                content: "Active: {{query.employee.data.isActive}}"
               - type: dialog
                 trigger:
                   type: button
