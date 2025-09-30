@@ -276,7 +276,7 @@ blocks:
                           - id: active
                             label: active
                             description: This employee is active
-                            optional: false
+                            optional: true
                             type: form-checkbox
                             defaultValue:
                               type: variable
