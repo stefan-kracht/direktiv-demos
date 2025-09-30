@@ -224,68 +224,68 @@ blocks:
                   type: button
                   label: edit
                 blocks:
-                  - type: form
-                    trigger:
-                      type: button
-                      label: Update
-                    mutation:
-                      method: PUT
-                      url: http://localhost:3333/employees/{{loop.person.id}}
-                      requestBody:
-                        - key: name
-                          value:
-                            type: variable
-                            value: this.name
+                  - type: query-provider
+                    queries: []
                     blocks:
-                      - id: name
-                        label: name
-                        description: ""
-                        optional: false
-                        type: form-string-input
-                        variant: text
-                        defaultValue: "{{loop.person.name}}"
-                      - type: query-provider
-                        queries: []
-                        blocks: []
-                      - type: columns
+                      - type: form
+                        trigger:
+                          type: button
+                          label: Update
+                        mutation:
+                          method: PUT
+                          url: http://localhost:3333/employees/{{loop.person.id}}
+                          requestBody:
+                            - key: name
+                              value:
+                                type: variable
+                                value: this.name
                         blocks:
-                          - type: column
+                          - id: name
+                            label: name
+                            description: ""
+                            optional: false
+                            type: form-string-input
+                            variant: text
+                            defaultValue: "{{loop.person.name}}"
+                          - type: columns
                             blocks:
-                              - id: salary
-                                label: salary
-                                description: ""
-                                optional: false
-                                type: form-number-input
-                                defaultValue:
-                                  type: number
-                                  value: 0
-                          - type: column
-                            blocks:
-                              - id: age
-                                label: age
-                                description: ""
-                                optional: false
-                                type: form-number-input
-                                defaultValue:
-                                  type: number
-                                  value: 0
-                      - id: department
-                        label: department
-                        description: ""
-                        optional: false
-                        type: form-select
-                        values:
-                          type: array
-                          value: []
-                        defaultValue: ""
-                      - id: active
-                        label: active
-                        description: This employee is active
-                        optional: false
-                        type: form-checkbox
-                        defaultValue:
-                          type: boolean
-                          value: false
+                              - type: column
+                                blocks:
+                                  - id: salary
+                                    label: salary
+                                    description: ""
+                                    optional: false
+                                    type: form-number-input
+                                    defaultValue:
+                                      type: number
+                                      value: 0
+                              - type: column
+                                blocks:
+                                  - id: age
+                                    label: age
+                                    description: ""
+                                    optional: false
+                                    type: form-number-input
+                                    defaultValue:
+                                      type: number
+                                      value: 0
+                          - id: department
+                            label: department
+                            description: ""
+                            optional: false
+                            type: form-select
+                            values:
+                              type: array
+                              value: []
+                            defaultValue: ""
+                          - id: active
+                            label: active
+                            description: This employee is active
+                            optional: false
+                            type: form-checkbox
+                            defaultValue:
+                              type: boolean
+                              value: false
         columns:
           - type: table-column
             label: name
