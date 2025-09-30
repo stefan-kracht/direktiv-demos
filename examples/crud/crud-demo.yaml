@@ -47,10 +47,15 @@ blocks:
       - id: employees
         url: http://localhost:3333/employees
         queryParams: []
+      - id: departments
+        url: http://localhost:3333/departments
+        queryParams: []
     blocks:
       - type: headline
         level: h1
-        label: "{{query.employees.count}} employees"
+        label:
+          "{{query.employees.count}} employees in {{query.departments.count}}
+          departments"
       - type: table
         data:
           type: loop
@@ -65,6 +70,9 @@ blocks:
                   type: button
                   label: create new employee
                 blocks:
+                  - type: headline
+                    level: h3
+                    label: Create new employee
                   - type: form
                     trigger:
                       type: button
@@ -129,12 +137,8 @@ blocks:
                         optional: false
                         type: form-select
                         values:
-                          type: array
-                          value:
-                            - engineering
-                            - marketing
-                            - sales
-                            - hr
+                          type: variable
+                          value: query.departments.data
                         defaultValue: ""
                       - id: active
                         label: active
@@ -147,8 +151,11 @@ blocks:
               - type: dialog
                 trigger:
                   type: button
-                  label: create random employees
+                  label: create random entries
                 blocks:
+                  - type: headline
+                    level: h3
+                    label: Create random entries
                   - type: form
                     trigger:
                       type: button
@@ -168,9 +175,6 @@ blocks:
                             type: variable
                             value: this.count
                     blocks:
-                      - type: headline
-                        level: h3
-                        label: Create random entries
                       - id: count
                         label: Number of entries
                         description: ""
@@ -184,6 +188,9 @@ blocks:
                   type: button
                   label: empty database
                 blocks:
+                  - type: headline
+                    level: h3
+                    label: Empty database
                   - type: form
                     trigger:
                       type: button
@@ -197,9 +204,6 @@ blocks:
                             type: string
                             value: clear
                     blocks:
-                      - type: headline
-                        level: h3
-                        label: Empty database
                       - type: text
                         content: Do you want to empty the database?
           - type: row-actions
@@ -207,25 +211,16 @@ blocks:
               - type: dialog
                 trigger:
                   type: button
-                  label: delete
-                blocks:
-                  - type: form
-                    trigger:
-                      type: button
-                      label: Delete
-                    mutation:
-                      method: DELETE
-                      url: http://localhost:3333/employees/{{loop.person.id}}
-                    blocks:
-                      - type: text
-                        content: Are you sure you want to delte {{loop.person.name}}?
-              - type: dialog
-                trigger:
-                  type: button
                   label: edit
                 blocks:
+                  - type: headline
+                    level: h3
+                    label: Edit {{loop.person.name}}
                   - type: query-provider
-                    queries: []
+                    queries:
+                      - id: employee
+                        url: http://localhost:3333/employees/{{loop.person.id}}
+                        queryParams: []
                     blocks:
                       - type: form
                         trigger:
@@ -246,7 +241,7 @@ blocks:
                             optional: false
                             type: form-string-input
                             variant: text
-                            defaultValue: "{{loop.person.name}}"
+                            defaultValue: "{{query.employee.data.name}}"
                           - type: columns
                             blocks:
                               - type: column
@@ -257,8 +252,8 @@ blocks:
                                     optional: false
                                     type: form-number-input
                                     defaultValue:
-                                      type: number
-                                      value: 0
+                                      type: variable
+                                      value: query.employee.data.salary
                               - type: column
                                 blocks:
                                   - id: age
@@ -267,25 +262,43 @@ blocks:
                                     optional: false
                                     type: form-number-input
                                     defaultValue:
-                                      type: number
-                                      value: 0
+                                      type: variable
+                                      value: query.employee.data.age
                           - id: department
                             label: department
                             description: ""
                             optional: false
                             type: form-select
                             values:
-                              type: array
-                              value: []
-                            defaultValue: ""
+                              type: variable
+                              value: query.departments.data
+                            defaultValue: "{{query.employee.data.department}}"
                           - id: active
                             label: active
                             description: This employee is active
                             optional: false
                             type: form-checkbox
                             defaultValue:
-                              type: boolean
-                              value: false
+                              type: variable
+                              value: query.employee.data.isActive
+              - type: dialog
+                trigger:
+                  type: button
+                  label: delete
+                blocks:
+                  - type: headline
+                    level: h3
+                    label: Delete {{loop.person.name}}
+                  - type: form
+                    trigger:
+                      type: button
+                      label: Delete
+                    mutation:
+                      method: DELETE
+                      url: http://localhost:3333/employees/{{loop.person.id}}
+                    blocks:
+                      - type: text
+                        content: Are you sure you want to this employee?
         columns:
           - type: table-column
             label: name
