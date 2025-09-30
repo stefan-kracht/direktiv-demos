@@ -44,40 +44,141 @@ blocks:
                   to staying one step ahead in an ever-changing landscape.
   - type: query-provider
     queries:
-      - id: persons
-        url: /ns/demo/persons
+      - id: employees
+        url: http://localhost:3333/employees
         queryParams: []
     blocks:
       - type: headline
         level: h1
-        label: "{{query.persons.data.total}} employees"
+        label: "{{query.employees.count}} employees"
       - type: table
         data:
           type: loop
           id: person
-          data: query.persons.data.data
-          pageSize: 10
+          data: query.employees.data
+          pageSize: 5
         blocks:
           - type: table-actions
             blocks:
               - type: dialog
                 trigger:
                   type: button
-                  label: seed database
+                  label: create new employee
                 blocks:
                   - type: form
                     trigger:
                       type: button
-                      label: Seed Database
+                      label: Create
                     mutation:
                       method: POST
-                      url: /ns/demo/actions/seed-database
+                      url: http://localhost:3333/employees
+                      requestBody:
+                        - key: name
+                          value:
+                            type: variable
+                            value: this.name
+                        - key: age
+                          value:
+                            type: variable
+                            value: this.age
+                        - key: isActive
+                          value:
+                            type: variable
+                            value: this.active
+                        - key: department
+                          value:
+                            type: variable
+                            value: this.department
+                        - key: salary
+                          value:
+                            type: variable
+                            value: this.salary
+                    blocks:
+                      - id: name
+                        label: name
+                        description: ""
+                        optional: false
+                        type: form-string-input
+                        variant: text
+                        defaultValue: ""
+                      - type: columns
+                        blocks:
+                          - type: column
+                            blocks:
+                              - id: salary
+                                label: salary
+                                description: ""
+                                optional: false
+                                type: form-number-input
+                                defaultValue:
+                                  type: number
+                                  value: 0
+                          - type: column
+                            blocks:
+                              - id: age
+                                label: age
+                                description: ""
+                                optional: false
+                                type: form-number-input
+                                defaultValue:
+                                  type: number
+                                  value: 0
+                      - id: department
+                        label: department
+                        description: ""
+                        optional: false
+                        type: form-select
+                        values:
+                          type: array
+                          value:
+                            - engineering
+                            - marketing
+                            - sales
+                            - hr
+                        defaultValue: ""
+                      - id: active
+                        label: active
+                        description: This employee is active
+                        optional: true
+                        type: form-checkbox
+                        defaultValue:
+                          type: boolean
+                          value: false
+              - type: dialog
+                trigger:
+                  type: button
+                  label: create random employees
+                blocks:
+                  - type: form
+                    trigger:
+                      type: button
+                      label: Create entries
+                    mutation:
+                      method: POST
+                      url: http://localhost:3333/actions
+                      queryParams: []
+                      requestHeaders: []
+                      requestBody:
+                        - key: action
+                          value:
+                            type: string
+                            value: seed
+                        - key: count
+                          value:
+                            type: variable
+                            value: this.count
                     blocks:
                       - type: headline
                         level: h3
-                        label: Seed database
-                      - type: text
-                        content: Do you want to seed the database with a sample set of data?
+                        label: Create random entries
+                      - id: count
+                        label: Number of entries
+                        description: ""
+                        optional: false
+                        type: form-number-input
+                        defaultValue:
+                          type: number
+                          value: 10
               - type: dialog
                 trigger:
                   type: button
@@ -88,8 +189,13 @@ blocks:
                       type: button
                       label: empy database
                     mutation:
-                      method: DELETE
-                      url: /ns/demo/delete-all-persons
+                      method: POST
+                      url: http://localhost:3333/actions
+                      requestBody:
+                        - key: action
+                          value:
+                            type: string
+                            value: clear
                     blocks:
                       - type: headline
                         level: h3
@@ -109,20 +215,81 @@ blocks:
                       label: Delete
                     mutation:
                       method: DELETE
-                      url: /ns/demo/delete-person/{{loop.person.id}}
+                      url: http://localhost:3333/employees/{{loop.person.id}}
                     blocks:
                       - type: text
-                        content: Are you sure you want to delte {{loop.person.first_name}}
+                        content: Are you sure you want to delte {{loop.person.name}}?
+              - type: dialog
+                trigger:
+                  type: button
+                  label: edit
+                blocks:
+                  - type: form
+                    trigger:
+                      type: button
+                      label: Update
+                    mutation:
+                      method: PUT
+                      url: http://localhost:3333/employees/{{loop.person.id}}
+                      requestBody:
+                        - key: name
+                          value:
+                            type: variable
+                            value: this.name
+                    blocks:
+                      - id: name
+                        label: name
+                        description: ""
+                        optional: false
+                        type: form-string-input
+                        variant: text
+                        defaultValue: "{{loop.person.name}}"
+                      - type: query-provider
+                        queries: []
+                        blocks: []
+                      - type: columns
+                        blocks:
+                          - type: column
+                            blocks:
+                              - id: salary
+                                label: salary
+                                description: ""
+                                optional: false
+                                type: form-number-input
+                                defaultValue:
+                                  type: number
+                                  value: 0
+                          - type: column
+                            blocks:
+                              - id: age
+                                label: age
+                                description: ""
+                                optional: false
+                                type: form-number-input
+                                defaultValue:
+                                  type: number
+                                  value: 0
+                      - id: department
+                        label: department
+                        description: ""
+                        optional: false
+                        type: form-select
+                        values:
+                          type: array
+                          value: []
+                        defaultValue: ""
+                      - id: active
+                        label: active
+                        description: This employee is active
+                        optional: false
+                        type: form-checkbox
+                        defaultValue:
+                          type: boolean
+                          value: false
         columns:
           - type: table-column
-            label: id
-            content: "{{loop.person.id}}"
+            label: name
+            content: "{{loop.person.name}}"
           - type: table-column
-            label: first name
-            content: "{{loop.person.first_name}}"
-          - type: table-column
-            label: last name
-            content: "{{loop.person.last_name}}"
-          - type: table-column
-            label: email
-            content: "{{loop.person.email}}"
+            label: department
+            content: "{{loop.person.department}}"
