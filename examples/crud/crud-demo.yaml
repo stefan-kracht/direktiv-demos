@@ -53,9 +53,7 @@ blocks:
     blocks:
       - type: headline
         level: h1
-        label:
-          "{{query.employees.count}} employees in {{query.departments.count}}
-          departments"
+        label: "{{query.employees.count}} employees"
       - type: table
         data:
           type: loop
@@ -138,7 +136,10 @@ blocks:
                         type: form-select
                         values:
                           type: array
-                          value: ["one", "two", "three"]
+                          value:
+                            - one
+                            - two
+                            - three
                         defaultValue: ""
                       - id: active
                         label: active
@@ -303,7 +304,10 @@ blocks:
                             type: form-select
                             values:
                               type: array
-                              value: ["one", "two", "three"]
+                              value:
+                                - one
+                                - two
+                                - three
                             defaultValue: "{{query.employee.data.department}}"
                           - id: active
                             label: active
@@ -338,3 +342,49 @@ blocks:
           - type: table-column
             label: department
             content: "{{loop.person.department}}"
+      - type: headline
+        level: h1
+        label: "{{query.departments.count}} departments"
+      - type: table
+        data:
+          type: loop
+          id: department
+          data: query.departments.data
+          pageSize: 10
+        blocks:
+          - type: table-actions
+            blocks:
+              - type: dialog
+                trigger:
+                  type: button
+                  label: new department
+                blocks: []
+          - type: row-actions
+            blocks:
+              - type: dialog
+                trigger:
+                  type: button
+                  label: edit
+                blocks: []
+              - type: dialog
+                trigger:
+                  type: button
+                  label: delete
+                blocks:
+                  - type: headline
+                    level: h3
+                    label: Delete department
+                  - type: form
+                    trigger:
+                      type: button
+                      label: Delete
+                    mutation:
+                      method: DELETE
+                      url: http://localhost:8080/departments/{{loop.department.id}}
+                    blocks:
+                      - type: text
+                        content: Are you sure you want to delete this department?
+        columns:
+          - type: table-column
+            label: department
+            content: "{{loop.department.name}}"
