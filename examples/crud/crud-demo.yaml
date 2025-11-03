@@ -358,14 +358,60 @@ blocks:
                 trigger:
                   type: button
                   label: new department
-                blocks: []
+                blocks:
+                  - type: headline
+                    level: h3
+                    label: Create new department
+                  - type: form
+                    trigger:
+                      type: button
+                      label: Create
+                    mutation:
+                      method: POST
+                      url: http://localhost:8080/departments
+                      requestBody:
+                        - key: name
+                          value:
+                            type: variable
+                            value: this.name
+                    blocks:
+                      - id: name
+                        label: name
+                        description: ""
+                        optional: false
+                        type: form-string-input
+                        variant: text
+                        defaultValue: ""
           - type: row-actions
             blocks:
               - type: dialog
                 trigger:
                   type: button
                   label: edit
-                blocks: []
+                blocks:
+                  - type: headline
+                    level: h3
+                    label: Edit {{loop.department.name}}
+                  - type: form
+                    trigger:
+                      type: button
+                      label: Update
+                    mutation:
+                      method: PUT
+                      url: http://localhost:8080/departments/{{loop.department.id}}
+                      requestBody:
+                        - key: name
+                          value:
+                            type: string
+                            value: "{{this.name}}"
+                    blocks:
+                      - id: name
+                        label: name
+                        description: ""
+                        optional: false
+                        type: form-string-input
+                        variant: text
+                        defaultValue: "{{loop.department.name}}"
               - type: dialog
                 trigger:
                   type: button
