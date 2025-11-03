@@ -137,8 +137,8 @@ blocks:
                         optional: false
                         type: form-select
                         values:
-                          type: variable
-                          value: query.departments.data
+                          type: array
+                          value: ["one", "two", "three"]
                         defaultValue: ""
                       - id: active
                         label: active
@@ -302,8 +302,8 @@ blocks:
                             optional: false
                             type: form-select
                             values:
-                              type: variable
-                              value: query.departments.data
+                              type: array
+                              value: ["one", "two", "three"]
                             defaultValue: "{{query.employee.data.department}}"
                           - id: active
                             label: active
