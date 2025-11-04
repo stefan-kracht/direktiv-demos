@@ -266,6 +266,22 @@ blocks:
                               value:
                                 type: variable
                                 value: this.name
+                            - key: age
+                              value:
+                                type: variable
+                                value: this.age
+                            - key: isActive
+                              value:
+                                type: variable
+                                value: this.active
+                            - key: department
+                              value:
+                                type: variable
+                                value: this.department
+                            - key: salary
+                              value:
+                                type: variable
+                                value: this.salary
                         blocks:
                           - id: name
                             label: name
