@@ -135,11 +135,10 @@ blocks:
                         optional: false
                         type: form-select
                         values:
-                          type: array
-                          value:
-                            - one
-                            - two
-                            - three
+                          type: variable-select-options
+                          arrayPath: query.departments.data
+                          labelPath: name
+                          valuePath: id
                         defaultValue: ""
                       - id: active
                         label: active
@@ -303,12 +302,11 @@ blocks:
                             optional: false
                             type: form-select
                             values:
-                              type: array
-                              value:
-                                - one
-                                - two
-                                - three
-                            defaultValue: "{{query.employee.data.department}}"
+                              type: variable-select-options
+                              arrayPath: query.departments.data
+                              labelPath: name
+                              valuePath: id
+                            defaultValue: "{{query.employee.data.department.id}}"
                           - id: active
                             label: active
                             description: This employee is active
@@ -341,7 +339,7 @@ blocks:
             content: "{{loop.person.name}}"
           - type: table-column
             label: department
-            content: "{{loop.person.department}}"
+            content: "{{loop.person.department.name}}"
       - type: headline
         level: h1
         label: "{{query.departments.count}} departments"
