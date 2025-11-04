@@ -136,9 +136,9 @@ blocks:
                         type: form-select
                         values:
                           type: variable-select-options
-                          arrayPath: query.departments.data
-                          labelPath: name
-                          valuePath: id
+                          data: query.departments.data
+                          label: name
+                          value: id
                         defaultValue: ""
                       - id: active
                         label: active
@@ -319,9 +319,9 @@ blocks:
                             type: form-select
                             values:
                               type: variable-select-options
-                              arrayPath: query.departments.data
-                              labelPath: name
-                              valuePath: id
+                              data: query.departments.data
+                              label: name
+                              value: id
                             defaultValue: "{{query.employee.data.department.id}}"
                           - id: active
                             label: active
