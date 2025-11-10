@@ -1,0 +1,16 @@
+x-direktiv-api: endpoint/v2
+x-direktiv-config:
+  allow_anonymous: true
+  path: /crud
+  plugins:
+    auth: []
+    inbound: []
+    outbound: []
+    target:
+      configuration:
+        file: /examples/crud/crud-demo.yaml
+      type: target-page
+get:
+  responses:
+    "200":
+      description: ""
