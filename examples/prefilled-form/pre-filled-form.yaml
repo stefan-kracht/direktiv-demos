@@ -128,11 +128,14 @@ blocks:
                         optional: false
                         type: form-select
                         values:
-                          type: array
+                          type: static-select-options
                           value:
-                            - free
-                            - pro
-                            - enterprise
+                            - value: free
+                              label: Free
+                            - value: pro
+                              label: Pro
+                            - value: enterprise
+                              label: Enterprise
                         defaultValue: free
                   - type: column
                     blocks:
@@ -166,8 +169,10 @@ blocks:
                         optional: false
                         type: form-select
                         values:
-                          type: variable
-                          value: query.user.meta.subscriptionPlanOptions
+                          type: variable-select-options
+                          data: query.user.meta.subscriptionPlanOptions
+                          label: name
+                          value: id
                         defaultValue: "{{query.user.data.subscriptionPlan}}"
           - type: headline
             level: h2
@@ -206,8 +211,10 @@ blocks:
                 optional: false
                 type: form-select
                 values:
-                  type: array
+                  type: static-select-options
                   value:
-                    - one
-                    - two
+                    - value: one
+                      label: One
+                    - value: two
+                      label: Two
                 defaultValue: "{{query.user.data}}"

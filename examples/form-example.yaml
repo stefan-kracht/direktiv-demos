@@ -52,11 +52,14 @@ blocks:
                     optional: false
                     type: form-select
                     values:
-                      type: array
+                      type: static-select-options
                       value:
-                        - one
-                        - two
-                        - three
+                        - value: US
+                          label: United States
+                        - value: DE
+                          label: Germany
+                        - value: FR
+                          label: France
                     defaultValue: two
           - id: password
             label: password
@@ -114,11 +117,14 @@ blocks:
                     optional: false
                     type: form-select
                     values:
-                      type: array
+                      type: static-select-options
                       value:
-                        - us-east-1
-                        - us-west-2
-                        - eu-central-1
+                        - value: us-east-1
+                          label: US East (N. Virginia)
+                        - value: us-west-2
+                          label: US West (Oregon)
+                        - value: eu-central-1
+                          label: EU (Frankfurt)
                     defaultValue: ""
           - id: cluster_description
             label: Description

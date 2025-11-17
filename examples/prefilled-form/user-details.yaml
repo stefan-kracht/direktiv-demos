@@ -12,7 +12,11 @@ x-direktiv-config:
         status_message: >
           {
             "meta": {
-              "subscriptionPlanOptions": ["free", "pro", "enterprise"]
+              "subscriptionPlanOptions": [
+                { "name": "free", "value": "free" },
+                { "name": "pro", "value": "pro" },
+                { "name": "enterprise", "value": "enterprise" }
+              ]
             },
             "data": {
               "status": "ok",
