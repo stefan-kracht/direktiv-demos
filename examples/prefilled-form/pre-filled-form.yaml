@@ -83,7 +83,7 @@ blocks:
                 variant: text
                 defaultValue: "This data comes from the API ->
                   string:{{query.user.data.status}},
-                  number: {{query.user.data.userId}}, boolean:
+                  number: {{query.user.data.userId}}, boolean:
                   {{query.user.data.emailVerified}}"
               - id: textarea
                 label: textarea
@@ -92,7 +92,7 @@ blocks:
                 type: form-textarea
                 defaultValue: "This data comes from the API ->
                   string:{{query.user.data.status}},
-                  number: {{query.user.data.userId}}, boolean:
+                  number: {{query.user.data.userId}}, boolean:
                   {{query.user.data.emailVerified}}"
           - type: card
             blocks:
@@ -130,12 +130,12 @@ blocks:
                         values:
                           type: static-select-options
                           value:
-                            - value: free
-                              label: Free
-                            - value: pro
-                              label: Pro
-                            - value: enterprise
-                              label: Enterprise
+                            - label: Free
+                              value: free
+                            - label: Pro
+                              value: pro
+                            - label: Enterprise
+                              value: enterprise
                         defaultValue: free
                   - type: column
                     blocks:
@@ -165,14 +165,15 @@ blocks:
                         defaultValue: "{{query.user.data.membershipStartDate}}"
                       - id: dynamic-select
                         label: dynamic select
-                        description: default value and values come from API ({{query.user.data.subscriptionPlan}})
+                        description: default value and values come from API
+                          ({{query.user.data.subscriptionPlan}})
                         optional: false
                         type: form-select
                         values:
                           type: variable-select-options
                           data: query.user.meta.subscriptionPlanOptions
                           label: name
-                          value: id
+                          value: value
                         defaultValue: "{{query.user.data.subscriptionPlan}}"
           - type: headline
             level: h2
@@ -213,8 +214,8 @@ blocks:
                 values:
                   type: static-select-options
                   value:
-                    - value: one
-                      label: One
-                    - value: two
-                      label: Two
+                    - label: One
+                      value: one
+                    - label: Two
+                      value: two
                 defaultValue: "{{query.user.data}}"
