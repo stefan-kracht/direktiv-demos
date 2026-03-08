@@ -237,7 +237,7 @@ blocks:
                               - type: text
                                 content: "Age: {{query.employee.data.age}}"
                               - type: text
-                                content: "Department: {{query.employee.data.department}}"
+                                content: "Department: {{query.employee.data.department.name}}"
                               - type: text
                                 content: "Active: {{query.employee.data.isActive}}"
               - type: dialog
